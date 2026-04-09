@@ -15,7 +15,7 @@ export function Layout() {
             <img
               src="/ccf-logo.png"
               alt="Country Club of Fairfield"
-              className="h-9 w-auto brightness-0 invert"
+              className="h-9 w-auto rounded"
             />
             <div>
               <h1 className="text-base font-bold leading-tight tracking-tight">Birdie Game</h1>
