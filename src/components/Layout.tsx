@@ -13,7 +13,7 @@ export function Layout() {
         <div className="max-w-lg mx-auto flex items-center justify-between">
           <NavLink to="/" className="flex items-center gap-2.5">
             <img
-              src="/ccf-logo.svg"
+              src="/ccf-logo.png"
               alt="Country Club of Fairfield"
               className="h-9 w-auto brightness-0 invert"
             />
