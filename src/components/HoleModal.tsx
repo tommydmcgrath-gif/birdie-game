@@ -83,27 +83,27 @@ export function HoleModal({
               </p>
             </div>
             <div
-              className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold ${
+              className={`w-12 h-12 rounded-lg flex items-center justify-center text-lg font-bold ${
                 completion
-                  ? 'bg-green-500 text-white'
-                  : 'bg-gray-100 text-gray-400 border-2 border-dashed border-gray-300'
+                  ? 'bg-green-700 text-white'
+                  : 'bg-gray-100 text-gray-400 border border-gray-200'
               }`}
             >
-              {completion ? '✓' : hole.number}
+              {completion ? '\u2713' : hole.number}
             </div>
           </div>
 
           {/* Date picker */}
           <label className="block mb-4">
             <span className="text-sm font-medium text-gray-700 mb-1 block">
-              {completion ? 'Completion date' : 'Date birdie was made'}
+              {completion ? 'Completion date' : 'Date completed'}
             </span>
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               max={today}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
             />
           </label>
 
@@ -114,30 +114,30 @@ export function HoleModal({
                 <button
                   onClick={handleUpdate}
                   disabled={loading || date === completion.completed_at}
-                  className="w-full bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition-colors"
+                  className="w-full bg-green-700 hover:bg-green-800 disabled:opacity-50 text-white font-semibold py-3 rounded-lg transition-colors"
                 >
                   {loading ? 'Saving...' : 'Update Date'}
                 </button>
                 <button
                   onClick={handleUncomplete}
                   disabled={loading}
-                  className="w-full bg-red-50 hover:bg-red-100 text-red-600 font-semibold py-3 rounded-xl transition-colors"
+                  className="w-full bg-red-50 hover:bg-red-100 text-red-600 font-medium py-3 rounded-lg transition-colors"
                 >
-                  {loading ? 'Removing...' : 'Remove Birdie'}
+                  {loading ? 'Removing...' : 'Remove'}
                 </button>
               </>
             ) : (
               <button
                 onClick={handleComplete}
                 disabled={loading}
-                className="w-full bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition-colors text-lg"
+                className="w-full bg-green-700 hover:bg-green-800 disabled:opacity-50 text-white font-semibold py-3 rounded-lg transition-colors text-base"
               >
-                {loading ? 'Saving...' : 'Punch It! 🐦'}
+                {loading ? 'Saving...' : 'Mark Complete'}
               </button>
             )}
             <button
               onClick={onClose}
-              className="w-full text-gray-500 font-medium py-2 hover:text-gray-700 transition-colors"
+              className="w-full text-gray-400 font-medium py-2 hover:text-gray-600 transition-colors text-sm"
             >
               Cancel
             </button>

@@ -74,7 +74,7 @@ export function PunchCard() {
     return (
       <div className="text-center py-20">
         <p className="text-gray-500 mb-4">Player not found</p>
-        <Link to="/" className="text-green-600 font-medium">
+        <Link to="/" className="text-green-700 font-medium">
           Back to Leaderboard
         </Link>
       </div>
@@ -88,31 +88,30 @@ export function PunchCard() {
   return (
     <div className="animate-fade-in-up">
       {/* Player header */}
-      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mb-4">
+      <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-4">
         <div className="flex items-center justify-between mb-2">
           <div>
             <h2 className="text-xl font-bold text-green-900">
               {player.name}
-              {isComplete && ' 🏆'}
             </h2>
-            <p className="text-sm text-gray-500">Birdie Punch Card</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wide">Punch Card</p>
           </div>
           <div className="text-right">
-            <div className="text-2xl font-bold text-green-700">
+            <div className="text-2xl font-bold text-green-800">
               {completedCount}
               <span className="text-sm font-normal text-gray-400">
                 /{TOTAL_HOLES}
               </span>
             </div>
-            <div className="text-xs text-gray-400">{pct}% complete</div>
+            <div className="text-xs text-gray-400">{pct}%</div>
           </div>
         </div>
 
         {/* Full progress bar */}
-        <div className="w-full bg-gray-100 rounded-full h-2.5">
+        <div className="w-full bg-gray-100 rounded-full h-2">
           <div
-            className={`h-2.5 rounded-full transition-all duration-500 ${
-              isComplete ? 'bg-gold-500' : 'bg-green-500'
+            className={`h-2 rounded-full transition-all duration-500 ${
+              isComplete ? 'bg-gold-500' : 'bg-green-600'
             }`}
             style={{ width: `${pct}%` }}
           />
@@ -120,7 +119,7 @@ export function PunchCard() {
       </div>
 
       {/* Punch card grid */}
-      <div className="grid grid-cols-3 gap-2.5">
+      <div className="grid grid-cols-3 gap-2">
         {COURSE_DATA.map((hole) => {
           const completion = getCompletion(hole.number);
           const isCompleted = !!completion;
@@ -130,12 +129,12 @@ export function PunchCard() {
             <button
               key={hole.number}
               onClick={() => setSelectedHole(hole.number)}
-              className={`relative rounded-xl p-3 text-left transition-all active:scale-95 ${
+              className={`relative rounded-lg p-3 text-left transition-all active:scale-95 ${
                 isCelebrating ? 'animate-punch-celebrate' : ''
               } ${
                 isCompleted
-                  ? 'bg-green-500 text-white shadow-md shadow-green-200'
-                  : 'bg-white text-gray-700 border-2 border-dashed border-gray-200 hover:border-green-300'
+                  ? 'bg-green-700 text-white shadow-sm'
+                  : 'bg-white text-gray-700 border border-gray-200 hover:border-green-400'
               }`}
             >
               {/* Hole number */}
@@ -150,7 +149,7 @@ export function PunchCard() {
               {/* Hole info */}
               <div
                 className={`text-[10px] leading-tight ${
-                  isCompleted ? 'text-green-100' : 'text-gray-400'
+                  isCompleted ? 'text-green-200' : 'text-gray-400'
                 }`}
               >
                 {hole.yards}y &middot; P{hole.par}
@@ -158,25 +157,29 @@ export function PunchCard() {
 
               {/* Completion indicator */}
               {isCompleted ? (
-                <div className="mt-1.5">
-                  <div className="text-[10px] text-green-100 leading-tight">
+                <div className="mt-1.5 flex items-center justify-between">
+                  <div className="text-[10px] text-green-200 leading-tight">
                     {format(
                       new Date(completion.completed_at + 'T00:00:00'),
                       'M/d'
                     )}
                   </div>
-                  <div className="absolute top-2 right-2 text-xs">✓</div>
+                  <div className="text-[10px] font-semibold text-green-200">
+                    &#10003;
+                  </div>
                 </div>
               ) : (
                 <div className="mt-1.5">
-                  <div className="w-5 h-5 rounded-full border-2 border-dashed border-gray-300" />
+                  <div className="w-4 h-4 rounded-full border border-gray-300" />
                 </div>
               )}
 
-              {/* Celebration confetti */}
+              {/* Celebration */}
               {isCelebrating && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span className="text-2xl animate-confetti-pop">🐦</span>
+                  <span className="text-lg animate-confetti-pop font-bold text-green-300">
+                    &#10003;
+                  </span>
                 </div>
               )}
             </button>
@@ -190,7 +193,7 @@ export function PunchCard() {
           to="/"
           className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
         >
-          ← Back to Leaderboard
+          &#8592; Leaderboard
         </Link>
       </div>
 

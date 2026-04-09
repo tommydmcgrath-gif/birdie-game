@@ -1,9 +1,8 @@
 import { Outlet, NavLink } from 'react-router-dom';
 
 const navItems = [
-  { to: '/', label: 'Leaderboard', icon: '🏆' },
-  { to: '/course', label: 'Course', icon: '⛳' },
-  { to: '/rules', label: 'Rules', icon: '📋' },
+  { to: '/', label: 'Leaderboard' },
+  { to: '/rules', label: 'Rules' },
 ];
 
 export function Layout() {
@@ -12,12 +11,16 @@ export function Layout() {
       {/* Header */}
       <header className="bg-green-900 text-white px-4 py-3 shadow-md">
         <div className="max-w-lg mx-auto flex items-center justify-between">
-          <NavLink to="/" className="flex items-center gap-2">
-            <span className="text-xl">🐦</span>
+          <NavLink to="/" className="flex items-center gap-2.5">
+            <img
+              src="/ccf-logo.svg"
+              alt="Country Club of Fairfield"
+              className="h-9 w-auto brightness-0 invert"
+            />
             <div>
               <h1 className="text-base font-bold leading-tight tracking-tight">Birdie Game</h1>
               <p className="text-[10px] text-green-300 leading-tight tracking-wide uppercase">
-                CC of Fairfield
+                Country Club of Fairfield
               </p>
             </div>
           </NavLink>
@@ -44,14 +47,13 @@ export function Layout() {
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `flex-1 flex flex-col items-center py-2 text-xs transition-colors ${
+                `flex-1 flex flex-col items-center py-2.5 text-xs font-medium transition-colors ${
                   isActive
-                    ? 'text-green-700 font-semibold'
+                    ? 'text-green-800'
                     : 'text-gray-400 hover:text-gray-600'
                 }`
               }
             >
-              <span className="text-lg mb-0.5">{item.icon}</span>
               {item.label}
             </NavLink>
           ))}

@@ -31,14 +31,13 @@ export function JoinPlayer() {
 
   return (
     <div className="animate-fade-in-up">
-      <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 max-w-sm mx-auto mt-8">
-        <div className="text-center mb-6">
-          <span className="text-4xl mb-2 block">🐦</span>
+      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 max-w-sm mx-auto mt-8">
+        <div className="mb-6">
           <h2 className="text-xl font-bold text-green-900">
             Join the Birdie Game
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            Enter your name to get your punch card
+            Enter your name to get started.
           </p>
         </div>
 
@@ -53,7 +52,7 @@ export function JoinPlayer() {
             placeholder="Your name"
             autoFocus
             maxLength={50}
-            className="w-full border border-gray-300 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent placeholder:text-gray-300 mb-3"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent placeholder:text-gray-300 mb-3"
           />
 
           {error && (
@@ -63,9 +62,9 @@ export function JoinPlayer() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition-colors text-base"
+            className="w-full bg-green-700 hover:bg-green-800 disabled:opacity-50 text-white font-semibold py-3 rounded-lg transition-colors text-base"
           >
-            {loading ? 'Creating...' : "Let's Go!"}
+            {loading ? 'Joining...' : 'Join Game'}
           </button>
         </form>
       </div>
